@@ -1,7 +1,7 @@
 {
   "name": "OKC Show Likes",
   "description": "Extension that shows likes in OKC for free",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "permissions": ["nativeMessaging", "storage", "tabs"],
   "host_permissions": ["https://www.okcupid.com/*"],

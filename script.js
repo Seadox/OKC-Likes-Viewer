@@ -64,8 +64,16 @@ function showLikes(element, key) {
       var key = data.data.me.likes.pageInfo.after;
 
       likes.forEach((like) => {
+        var id = like.primaryImage.square225.split("/")[11].split(".")[0];
         const para = document.createElement("img");
         para.src = like.primaryImage.square225;
+        para.onclick = function () {
+          window.open(
+            "https://cdn.okccdn.com/php/load_okc_image.php/images/0x230/540x770/0/" +
+              id +
+              ".jpg"
+          );
+        };
         para.className = "customFrameImg";
 
         element.appendChild(para);
