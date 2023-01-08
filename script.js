@@ -1,4 +1,5 @@
 var flag = false;
+var updateFlag = false;
 
 chrome.runtime.onMessage.addListener((type, sender, res) => {
   if (type == "show") {
@@ -28,6 +29,11 @@ chrome.runtime.onMessage.addListener((type, sender, res) => {
 
     if (tab[0] !== undefined) tab[0].style.display = "block";
     flag = false;
+  } else if (type == "update" && !updateFlag) {
+    const element = document.getElementById("navigation");
+
+    updateAvailable(element);
+    updateFlag = true;
   }
 });
 
@@ -81,4 +87,15 @@ function showLikes(element, key) {
 
       if (hasMore) showLikes(element, key);
     });
+}
+function updateAvailable(element) {
+  const para = document.createElement("button");
+
+  para.className = "update";
+  para.innerText = "extansion update available";
+  para.onclick = () => {
+    window.open("https://github.com/Seadox/OKC-Show-Likes", "_blank");
+  };
+
+  element.appendChild(para);
 }
