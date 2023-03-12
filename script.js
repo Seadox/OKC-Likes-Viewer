@@ -70,15 +70,20 @@ function showLikes(element, key) {
       var key = data.data.me.likes.pageInfo.after;
 
       likes.forEach((like) => {
-        var id = like.primaryImage.square225.split("/")[11].split(".")[0];
+        console.log(like.primaryImage.square225);
+        var pic;
+
+        if (like.primaryImage.square225.split("/").length >= 11)
+          pic =
+            "https://cdn.okccdn.com/php/load_okc_image.php/images/0x230/540x770/0/" +
+            like.primaryImage.square225.split("/")[11].split(".")[0] +
+            ".jpg";
+        else pic = like.primaryImage.square225;
+
         const para = document.createElement("img");
         para.src = like.primaryImage.square225;
         para.onclick = function () {
-          window.open(
-            "https://cdn.okccdn.com/php/load_okc_image.php/images/0x230/540x770/0/" +
-              id +
-              ".jpg"
-          );
+          window.open(pic);
         };
         para.className = "customFrameImg";
 
